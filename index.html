@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            background-color: white;
+        }
+        input {
+            height: 47px;
+            width: 316px;
+            border-radius: 13px;
+            border: 5px inset black;
+            margin: auto;
+            margin-top: 3px;
+            margin-bottom: 25px;
+            background-color: inherit;
+            /* box-shadow: 5px 4px 4px black; */
+            text-align: center;
+            font-size: 25px;
+            font-style: italic;
+        }
+        .container {
+            display: flex;
+            width: 345px;
+            margin: auto;
+            justify-content: center;
+            flex-wrap: wrap;
+            border: 7px groove #9496af;
+            padding: 7px;
+            position: relative;
+            top: 70px;
+            box-shadow: 5px 4px 4px black;
+        }
+        button {
+            border: 2px outset black;
+            background-color: #c7b9d3;
+            font-size: 25px;
+            margin: 6px;
+            margin-bottom: 15px;
+            padding: 3px;
+            width: 74px;
+            box-sizing: border-box;
+            text-align: center;
+            box-shadow: 5px 4px 4px black;
+            border-radius: 50%;
+        }
+        button:focus{
+           box-shadow: 1px 1px 1px black;
+           width: 70px;
+           background-color: burlywood;
+
+        }
+        
+    </style>
+    
+</head>
+<body>
+   
+    <div class="container">
+        <input id="input" type="text" id="display" value="Calculator">
+        <button class="buttons">(</button>
+        <button class="buttons">)</button>
+        <button class="buttons">%</button>
+        <button class="buttons">C</button>
+        <button class="buttons">7</button>
+        <button class="buttons">8</button>
+        <button class="buttons">9</button>
+        <button class="buttons">/</button>
+        <button class="buttons">4</button>
+        <button class="buttons">5</button>
+        <button class="buttons">6</button>
+        <button class="buttons">*</button>
+        <button class="buttons">1</button>
+        <button class="buttons">2</button>
+        <button class="buttons">3</button>
+        <button class="buttons">-</button>
+        <button class="buttons">0</button>
+        <button class="buttons">.</button>
+        <button class="buttons">+</button>
+        <button class="buttons">=</button>
+        
+
+    </div>
+     <!-- using script before HTML will fuckup everything -->
+     <script>
+        var str = "";
+        var buttons = document.querySelectorAll('.buttons');
+        Array.from(buttons).forEach((button) => {
+            button.addEventListener('click', (e) => {
+                if (e.target.innerHTML == '=') {
+                    str = str + e.target.innerHTML+eval(str);
+                    
+                    document.querySelector('#input').value = str;
+                }
+                else if (e.target.innerHTML == 'C') {
+                    str = "";
+                    document.querySelector('#input').value = str;
+                }
+                else {
+                    str = str + e.target.innerHTML;
+                    document.querySelector('#input').value = str;
+                }
+            })
+        })
+    </script>
+    
+</body>
+
+</html>
